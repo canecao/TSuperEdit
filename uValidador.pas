@@ -12,8 +12,8 @@ Type
     FVetorMultiplicador: TVetorMultiplicador;
     FNumero: String;
     procedure SetTipoDoc(const Value: TTipoDoc);
-    function GetNumero: String;
     procedure SetNumero(const Value: String);
+    function GetNumero: String;
     function GetVetorMultiplicador: TVetorMultiplicador; virtual; abstract;
     function GetDigitoVericador: String;
     function GeraDigito(idx: Integer): Integer;
@@ -92,14 +92,14 @@ end;
 
 function TDocumento.Validar: Boolean;
 begin
-  Result := ValidaTotalDigitos and ValidaDigitosSequencias and ValidaDigitoVerificardo
+  Result := ValidaDigitosSequencias and ValidaDigitoVerificardo
 end;
 
 function TDocumento.ValidaTotalDigitos: Boolean;
 begin
    case Self.TipoDoc of
-     tpCPF:  Result := Length(TFormatador.RetiraMascara(Self.Numero)) < Self.FQuantidadeDigitos;
-     tpCNPJ: Result := Length(TFormatador.RetiraMascara(Self.Numero)) < Self.FQuantidadeDigitos;
+     tpCPF:  Result := Length(TFormatador.RetiraMascara(Self.Numero)) >= Self.FQuantidadeDigitos;
+     tpCNPJ: Result := Length(TFormatador.RetiraMascara(Self.Numero)) >= Self.FQuantidadeDigitos;
    end;
 end;
 
