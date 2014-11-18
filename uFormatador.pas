@@ -2,109 +2,112 @@ unit uFormatador;
 
 interface
 
-uses uTipos;
+   uses uTipos;
 
-type
-  TFormatador = class
-  private
-    function Cpf(pNumero: String): String;
-    function Cnpj(pNumero: String): String;
-    function Limpar(pTexto: String): String;
-    function RPad(pTexto: String; pCaracter : char; pTamanho: Integer): String;
-  public
-    class function ColocaMascara(pTipoDocumento: TTipoDoc; pString: String): String;
-    class function RetiraMascara(pString: String): String;
-  end;
+   type
+      TFormatador = class
+      private
+         function Limpar( pTexto: String ): String;
+         function Pad(  pCaracter: char; pTamanho: Integer ): String;
+         function RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+         function LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+         function Mascarar( texto, mascara: String ): string;
+         function GetMascara( TipoDco: TTipoDoc ): String;
+      public
+         property mascara[ TipoDco: TTipoDoc ]: String read GetMascara;
+         class function ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
+         class function RetiraMascara( pString: String ): String;
+      end;
 
 implementation
 
-uses
-  System.SysUtils, System.StrUtils;
+   uses
+      System.SysUtils, System.StrUtils;
 
-{ TFormatador }
+   { TFormatador }
 
-function TFormatador.Limpar(pTexto: String): String;
-var
-  Contador: Integer;
-  Aux: Boolean;
-begin
-  Result := '';
-  for Contador := 1 to Length(pTexto) do
-  begin
-    Aux := CharInSet(pTexto[Contador], ['0' .. '9']);
-    Result := Result + ifthen(Aux, pTexto[Contador], '');
-  end;
-end;
+   function TFormatador.Pad( pCaracter: char; pTamanho: Integer ): String;
+   begin
+      Result := StringOfChar( pCaracter, pTamanho  );
+   end;
 
-function TFormatador.RPad(pTexto: String; pCaracter : char; pTamanho: Integer): String;
-begin
-  Result := Trim(pTexto);
-  Result := StringOfChar(pCaracter, pTamanho - Length(Result));
-  Result := Trim(pTexto) + Result;
-end;
+   function TFormatador.LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+   var Quantidade : Integer;
+   begin
+      Quantidade := pTamanho - Length( Trim( pTexto ) );
+      Result := Pad( pCaracter, Quantidade ) + Trim( pTexto );
+   end;
 
-function TFormatador.Cnpj(pNumero: String): String;
-var
-  a, b, c, d, e: String;
-begin
-  //#32 = ' '
-  a := Copy(pNumero, 1, 2);
-  a := RPad(a, #32, 2) + '.';
+   function TFormatador.RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+   var Quantidade : Integer;
+   begin
+      Quantidade := pTamanho - Length( Trim( pTexto ) );
+      Result := Trim( pTexto ) + Pad( pCaracter, Quantidade );
+   end;
 
-  b := Copy(pNumero, 3, 3);
-  b := RPad(b, #32, 3) + '.';
+   function TFormatador.GetMascara( TipoDco: TTipoDoc ): String;
+   begin
+      case TipoDco of
+         tpCPF: Result         := '999.999.999-99';
+         tpCNPJ: Result        := '99.999.999/9999-99';
+         tpData: Result        := '99-99-9999';
+         tpCep: Result         := '99.999-999';
+         tpCelular: Result     := '99999-9999';
+         tpTelefone: Result    := '9999-9999';
+         tpCelularDDD: Result  := '(0xx99) 99999-9999';
+         tpTelefoneDDD: Result := '(0xx99) 9999-9999';
+      end;
+   end;
 
-  c := Copy(pNumero, 6, 3);
-  c := RPad(c, #32, 3) + '/';
+   function TFormatador.Limpar( pTexto: String ): String;
+   var
+      Aux: Boolean;
+      C  : char;
+   begin
+      Result := '';
+      for C in pTexto do
+         begin
+            Aux    := CharInSet( C, [ '0' .. '9' ] );
+            Result := Result + ifthen( Aux, C, EmptyStr );
+         end;
+   end;
 
-  d := Copy(pNumero, 9, 4);
-  d := RPad(d, #32, 4) + '-';
+   function TFormatador.Mascarar( texto: String; mascara: String ): string;
+   var
+      i             : Integer;
+      AuxEdt, AuxStr: Boolean;
+      C             : char;
+   begin
+      i := 1;
+      for C in texto do
+         begin
+            AuxEdt := CharInSet( C, [ '0' .. '9' ] );
+            AuxStr := mascara[ i ] = '9';
+            if AuxStr and not AuxEdt then
+               delete( texto, i, 1 );
+            if not AuxStr and AuxEdt then
+               insert( mascara[ i ], texto, i );
+            Inc( i, 1 );
+         end;
+      Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
+   end;
 
-  e := Copy(pNumero, 13, 2);
-  e := RPad(e, #32, 2);
+   class function TFormatador.ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
+   var
+      Formatador: TFormatador;
+   begin
+      Formatador := TFormatador.Create;
+      Result     := Formatador.Mascarar( pString, Formatador.mascara[ pTipoDocumento ] );
+      FreeAndNil( Formatador );
+   end;
 
-  Result := a + b + c + d + e
-end;
-
-function TFormatador.Cpf(pNumero: String): String;
-var
-  a, b, c, d: String;
-begin
-  a := Copy(pNumero, 1, 3);
-  a := RPad(a, #32, 3) + '.';
-
-  b := Copy(pNumero, 4, 3);
-  b := RPad(b, #32, 3) + '.';
-
-  c := Copy(pNumero, 7, 3);
-  c := RPad(c, #32, 3) + '-';
-
-  d := Copy(pNumero, 10, 2);
-  d := RPad(d, #32, 2);
-
-  Result := a + b + c + d
-end;
-
-class function TFormatador.ColocaMascara(pTipoDocumento: TTipoDoc; pString: String): String;
-var
-  Formatador: TFormatador;
-begin
-  Formatador := TFormatador.Create;
-  Result := Formatador.Limpar(pString);
-  case pTipoDocumento of
-    tpCPF:  Result := Formatador.Cpf(Result);
-    tpCNPJ: Result := Formatador.Cnpj(Result);
-  end;
-  FreeAndNil(Formatador);
-end;
-
-class function TFormatador.RetiraMascara( pString: String): String;
-var
-  Formatador: TFormatador;
-begin
-  Formatador := TFormatador.Create;
-  Result := Formatador.Limpar(pString);
-  FreeAndNil(Formatador);
-end;
+   class function TFormatador.RetiraMascara( pString: String ): String;
+   var
+      Formatador: TFormatador;
+   begin
+      Formatador := TFormatador.Create;
+      Result     := Formatador.Limpar( pString );
+      FreeAndNil( Formatador );
+   end;
 
 end.
