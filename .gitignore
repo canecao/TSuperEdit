@@ -41,3 +41,13 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.dcu
+__history/uFormatador.pas.~77~
+*.~1~
+*.res
+*.identcache
+*.local
+*.dproj
+*.dpr
+*.exe
