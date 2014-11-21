@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9F42FD6F-5758-4E56-85D0-0CD47B3DB49F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Componentes.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test\ComponentesTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Componentes">
+        <MSBuild Projects="Componentes.dproj"/>
+    </Target>
+    <Target Name="Componentes:Clean">
+        <MSBuild Projects="Componentes.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Componentes:Make">
+        <MSBuild Projects="Componentes.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ComponentesTests">
+        <MSBuild Projects="Test\ComponentesTests.dproj"/>
+    </Target>
+    <Target Name="ComponentesTests:Clean">
+        <MSBuild Projects="Test\ComponentesTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ComponentesTests:Make">
+        <MSBuild Projects="Test\ComponentesTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Componentes;ComponentesTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Componentes:Clean;ComponentesTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Componentes:Make;ComponentesTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

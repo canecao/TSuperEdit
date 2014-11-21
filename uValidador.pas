@@ -13,11 +13,10 @@ interface
          FNumero            : String;
          procedure SetTipoDoc( const Value: TTipoDoc );
          procedure SetNumero( const Value: String );
-         function GetNumero: String;
-         function GetVetorMultiplicador: TVetorMultiplicador; virtual; abstract;
-         function GetDigitoVericador: String;
-         function GeraDigito( idx: Integer ): Integer;
+         function  GetNumero: String;
+         function  GetDigitoVericador: String;
       public
+         function GeraDigito( idx: Integer ): Integer;
          function ValidaTotalDigitos: Boolean;
          function ValidaDigitosSequencias: Boolean;
          function ValidaDigitoVerificardo: Boolean;
@@ -25,7 +24,7 @@ interface
          property TipoDoc: TTipoDoc read FTipoDoc write SetTipoDoc;
          property Numero: String read GetNumero write SetNumero;
          property DigitoVericador: String read GetDigitoVericador;
-         property VetorMultiplicador: TVetorMultiplicador read GetVetorMultiplicador;
+         property VetorMultiplicador: TVetorMultiplicador read FVetorMultiplicador;
       End;
 
       TFabricaDocumento = class
@@ -34,15 +33,11 @@ interface
       end;
 
       TCPF = Class( TDocumento )
-      protected
-         function GetVetorMultiplicador: TVetorMultiplicador; override;
       public
          Constructor Create;
       end;
 
       TCNPJ = Class( TDocumento )
-      protected
-         function GetVetorMultiplicador: TVetorMultiplicador; override;
       public
          Constructor Create;
       end;
@@ -103,21 +98,18 @@ implementation
    function TDocumento.GeraDigito( idx: Integer ): Integer;
    var
       Contador, vLow, digito, multiplicador, index, Soma, Resto: Integer;
-      vVetorMultiplicador                                      : TVetorMultiplicador;
    begin
-      Soma                := 0;
-      vLow                := ifthen( idx = 1, 1, 0 );
-      vVetorMultiplicador := VetorMultiplicador;
-      for Contador        := vLow to high( vVetorMultiplicador ) do
+      Soma         := 0;
+      vLow         := ifthen( idx = 1, 1, 0 );
+      for Contador := vLow to high( FVetorMultiplicador ) do
          begin
             Index         := ifthen( idx = 2, Contador + 1, Contador );
             digito        := StrToInt( Numero[ index ] );
-            multiplicador := vVetorMultiplicador[ Contador ];
+            multiplicador := FVetorMultiplicador[ Contador ];
             Soma          := Soma + digito * multiplicador;
          end;
       Resto  := Soma mod 11;
       Result := ifthen( Resto < 2, 0, 11 - Resto );
-      FillChar( vVetorMultiplicador[ 0 ], Length( vVetorMultiplicador ) * SizeOf( vVetorMultiplicador[ 0 ] ), 0 );
    end;
 
    procedure TDocumento.SetNumero( const Value: String );
@@ -148,12 +140,8 @@ implementation
    begin
       FQuantidadeDigitos := 11;
       TipoDoc            := tpCPF;
-   end;
-
-   function TCPF.GetVetorMultiplicador: TVetorMultiplicador;
-   begin
-      SetLength( Result, Length( VetorMultCPF ) );
-      Move( VetorMultCPF[ Low( VetorMultCPF ) ], Result[ 0 ], SizeOf( VetorMultCPF ) )
+      SetLength( FVetorMultiplicador, Length( VetorMultCPF ) );
+      Move( VetorMultCPF[ Low( VetorMultCPF ) ], FVetorMultiplicador[ 0 ], SizeOf( VetorMultCPF ) )
    end;
 
    { TCNPJ }
@@ -162,12 +150,8 @@ implementation
    begin
       FQuantidadeDigitos := 14;
       TipoDoc            := tpCNPJ;
-   end;
-
-   function TCNPJ.GetVetorMultiplicador: TVetorMultiplicador;
-   begin
-      SetLength( Result, Length( VetorMultCNPJ ) );
-      Move( VetorMultCNPJ[ Low( VetorMultCNPJ ) ], Result[ 0 ], SizeOf( VetorMultCNPJ ) )
+      SetLength( FVetorMultiplicador, Length( VetorMultCNPJ ) );
+      Move( VetorMultCNPJ[ Low( VetorMultCNPJ ) ], FVetorMultiplicador[ 0 ], SizeOf( VetorMultCNPJ ) )
    end;
 
    { TValidador }

@@ -6,14 +6,14 @@ interface
 
    type
       TFormatador = class
-      private
-         function Limpar( pTexto: String ): String;
-         function Pad(  pCaracter: char; pTamanho: Integer ): String;
-         function RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
-         function LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
-         function Mascarar( texto, mascara: String ): string;
+      protected
          function GetMascara( TipoDco: TTipoDoc ): String;
       public
+         function Mascarar( texto, mascara: String ): string;
+         function Limpar( pTexto: String ): String;
+         function Pad( pCaracter: char; pTamanho: Integer ): String;
+         function RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+         function LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
          property mascara[ TipoDco: TTipoDoc ]: String read GetMascara;
          class function ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
          class function RetiraMascara( pString: String ): String;
@@ -28,21 +28,23 @@ implementation
 
    function TFormatador.Pad( pCaracter: char; pTamanho: Integer ): String;
    begin
-      Result := StringOfChar( pCaracter, pTamanho  );
+      Result := StringOfChar( pCaracter, pTamanho );
    end;
 
    function TFormatador.LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
-   var Quantidade : Integer;
+   var
+      Quantidade: Integer;
    begin
       Quantidade := pTamanho - Length( Trim( pTexto ) );
-      Result := Pad( pCaracter, Quantidade ) + Trim( pTexto );
+      Result     := Pad( pCaracter, Quantidade ) + Trim( pTexto );
    end;
 
    function TFormatador.RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
-   var Quantidade : Integer;
+   var
+      Quantidade: Integer;
    begin
       Quantidade := pTamanho - Length( Trim( pTexto ) );
-      Result := Trim( pTexto ) + Pad( pCaracter, Quantidade );
+      Result     := Trim( pTexto ) + Pad( pCaracter, Quantidade );
    end;
 
    function TFormatador.GetMascara( TipoDco: TTipoDoc ): String;
@@ -54,8 +56,8 @@ implementation
          tpCep: Result         := '99.999-999';
          tpCelular: Result     := '99999-9999';
          tpTelefone: Result    := '9999-9999';
-         tpCelularDDD: Result  := '(0xx99) 99999-9999';
-         tpTelefoneDDD: Result := '(0xx99) 9999-9999';
+         tpCelularDDD: Result  := '(99) 99999-9999';
+         tpTelefoneDDD: Result := '(99) 9999-9999';
       end;
    end;
 
@@ -76,19 +78,17 @@ implementation
    var
       i             : Integer;
       AuxEdt, AuxStr: Boolean;
-      C             : char;
    begin
       i := 1;
-      for C in texto do
-         begin
-            AuxEdt := CharInSet( C, [ '0' .. '9' ] );
-            AuxStr := mascara[ i ] = '9';
-            if AuxStr and not AuxEdt then
-               delete( texto, i, 1 );
-            if not AuxStr and AuxEdt then
-               insert( mascara[ i ], texto, i );
-            Inc( i, 1 );
-         end;
+      Repeat
+         AuxEdt := CharInSet( texto[ i ], [ '0' .. '9' ] );
+         AuxStr := mascara[ i ] = '9';
+         if AuxStr and not AuxEdt then
+            delete( texto, i, 1 );
+         if not AuxStr and AuxEdt then
+            insert( mascara[ i ], texto, i );
+         inc( i );
+      until ( i > Length( texto ) );
       Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
    end;
 
