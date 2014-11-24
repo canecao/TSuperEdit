@@ -2,10 +2,11 @@ unit uFormatador;
 
 interface
 
-   uses uTipos;
+   uses uTipos, Classes;
 
    type
       TFormatador = class
+      private
       protected
          function GetMascara( TipoDco: TTipoDoc ): String;
       public
@@ -14,6 +15,8 @@ interface
          function Pad( pCaracter: char; pTamanho: Integer ): String;
          function RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
          function LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+         function ArrayToStr( Vetor: array of String; Delimitador: char = ',' ): String;
+         function Split( texto: String; Delimitador: char = ',' ): TStrings;
          property mascara[ TipoDco: TTipoDoc ]: String read GetMascara;
          class function ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
          class function RetiraMascara( pString: String ): String;
@@ -25,6 +28,22 @@ implementation
       System.SysUtils, System.StrUtils;
 
    { TFormatador }
+   function TFormatador.Split( texto: String; Delimitador: char = ',' ): TStrings;
+   begin
+      Result                 := TStringList.Create;
+      Result.Delimiter       := Delimitador;
+      Result.StrictDelimiter := True;
+      Result.DelimitedText   := texto;
+   end;
+
+   function TFormatador.ArrayToStr( Vetor: array of String; Delimitador: char = ',' ): String;
+   var
+      I: Integer;
+   begin
+      Result    := Vetor[ Low( Vetor ) ];
+      for I     := Low( Vetor ) + 1 to High( Vetor ) do
+         Result := Result + Delimitador + Vetor[ I ];
+   end;
 
    function TFormatador.Pad( pCaracter: char; pTamanho: Integer ): String;
    begin
@@ -76,19 +95,19 @@ implementation
 
    function TFormatador.Mascarar( texto: String; mascara: String ): string;
    var
-      i             : Integer;
+      I             : Integer;
       AuxEdt, AuxStr: Boolean;
    begin
-      i := 1;
+      I := 1;
       Repeat
-         AuxEdt := CharInSet( texto[ i ], [ '0' .. '9' ] );
-         AuxStr := mascara[ i ] = '9';
+         AuxEdt := CharInSet( texto[ I ], [ '0' .. '9' ] );
+         AuxStr := mascara[ I ] = '9';
          if AuxStr and not AuxEdt then
-            delete( texto, i, 1 );
+            delete( texto, I, 1 );
          if not AuxStr and AuxEdt then
-            insert( mascara[ i ], texto, i );
-         inc( i );
-      until ( i > Length( texto ) );
+            insert( mascara[ I ], texto, I );
+         inc( I );
+      until ( I > Length( texto ) );
       Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
    end;
 

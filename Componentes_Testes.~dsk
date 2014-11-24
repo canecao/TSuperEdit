@@ -1,9 +1,9 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas',0,1,1,16,1,0,0,,
-File_1=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas',0,1,273,1,21,0,0,,
-File_2=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTelefoneAndroid.pas',0,1,1,1,1,0,0,,
-File_3=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\Source\DUnit\src\TestFramework.pas',0,1,1472,1,1492,0,0,,
-File_4=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas',0,1,1,19,12,0,0,,
+File_0=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas',0,1,273,1,21,0,0,,
+File_1=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTelefoneAndroid.pas',0,1,1,1,1,0,0,,
+File_2=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\Source\DUnit\src\TestFramework.pas',0,1,1472,1,1492,0,0,,
+File_3=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas',0,1,1,19,12,0,0,,
+File_4=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas',0,1,107,75,132,0,0,,
 File_5=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas',0,1,1,59,8,0,0,,
 File_6=TSourceModule,'C:\ProjetosBemaXE3\INFRA\BemaForms\Source\FTelaAut.pas',0,1,1,1,1,0,0,,
 File_7=TSourceModule,'C:\ProjetosBemaXE3\INFRA\BemaForms\Source\FPai.pas',0,1,1,1,1,0,0,,
@@ -14,18 +14,18 @@ File_11=TSourceModule,'C:\ProjetosBEMAXE3\Shared\SAFT\Source\FExpSAFTMT.pas',0,1
 File_12=TSourceModule,'C:\ProjetosBemaXE3\Shared\VHF\ObjetosMT\Interface\FCxOperacaoImpExtrato.pas',0,1,1591,37,1607,0,0,,
 
 [Modules]
-Module0=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-Module1=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas
+Module0=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
+Module1=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
 Module2=default.htm
 Count=3
 EditWindowCount=1
 
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas]
+[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas]
+[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
@@ -35,7 +35,7 @@ ModuleType=TURLModule
 
 [EditWindow0]
 ViewCount=3
-CurrentEditView=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
+CurrentEditView=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
 View0=0
 View1=1
 View2=2
@@ -71,9 +71,9 @@ WelcomePageURL=bds:/default.htm
 [View1]
 CustomEditViewType=TEditView
 Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-CursorX=47
-CursorY=37
-TopLine=19
+CursorX=87
+CursorY=16
+TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -81,14 +81,14 @@ EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.
 
 [View2]
 CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas
-CursorX=59
-CursorY=95
+Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
+CursorX=16
+CursorY=1
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas
+EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
 
 [Watches]
 Count=7
@@ -147,7 +147,7 @@ MaxLeft=-5
 MaxTop=-10
 ClientWidth=9917
 ClientHeight=1048
-BottomPanelSize=509
+BottomPanelSize=0
 
 [ProjectManager]
 PercentageSizes=1

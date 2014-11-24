@@ -17,7 +17,6 @@ interface
    type
       // Test methods for class TFormatador
 
-
       TestTFormatador = class( TTestCase )
       strict private
          FFormatador: TFormatador;
@@ -32,12 +31,14 @@ interface
          procedure TestMascarar;
          procedure TestColocaMascara;
          procedure TestRetiraMascara;
+         procedure TestArrayToStr;
+         procedure TestSplit;
       end;
 
 implementation
 
    uses
-      System.SysUtils;
+      System.SysUtils, System.Classes;
 
    procedure TestTFormatador.SetUp;
    begin
@@ -92,6 +93,20 @@ implementation
       CheckEqualsString( 'RicardoAAA', ReturnValue, 'Valor do Retorno ' + ReturnValue );
    end;
 
+   procedure TestTFormatador.TestSplit;
+   var
+      Texto      : String;
+      Delimitador: Char;
+      ReturnValue: TStrings;
+   begin
+      Texto       := 'a,b c,d';
+      ReturnValue := FFormatador.Split( Texto );
+      CheckNotNull( ReturnValue, 'erro ao instanciar o objeto lista' );
+      CheckEqualsString( 'a', ReturnValue[ 0 ], 'Erro teste split' );
+      CheckEqualsString( 'b c', ReturnValue[ 1 ], 'Erro teste split' );
+      CheckEqualsString( 'd', ReturnValue[ 2 ], 'Erro teste split' );
+   end;
+
    procedure TestTFormatador.TestLPad;
    var
       ReturnValue: string;
@@ -129,6 +144,18 @@ implementation
                break;
          end;
       Assert( Aux, 'Valor do Retorno ' + ReturnValue );
+   end;
+
+   procedure TestTFormatador.TestArrayToStr;
+   var
+      vetor      : array [ 1 .. 3 ] of String;
+      ReturnValue: String;
+   begin
+      vetor[ 1 ]  := 'Ricardo';
+      vetor[ 2 ]  := 'Paola';
+      vetor[ 3 ]  := 'Olivia';
+      ReturnValue := FFormatador.ArrayToStr( vetor );
+      CheckEqualsString( 'Ricardo,Paola,Olivia', ReturnValue, 'Teste Array to String' );
    end;
 
    procedure TestTFormatador.TestColocaMascara;
