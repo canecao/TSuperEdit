@@ -1,51 +1,39 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas',0,1,273,1,21,0,0,,
-File_1=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTelefoneAndroid.pas',0,1,1,1,1,0,0,,
-File_2=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\Source\DUnit\src\TestFramework.pas',0,1,1472,1,1492,0,0,,
-File_3=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas',0,1,1,19,12,0,0,,
-File_4=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas',0,1,107,75,132,0,0,,
-File_5=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas',0,1,1,59,8,0,0,,
-File_6=TSourceModule,'C:\ProjetosBemaXE3\INFRA\BemaForms\Source\FTelaAut.pas',0,1,1,1,1,0,0,,
-File_7=TSourceModule,'C:\ProjetosBemaXE3\INFRA\BemaForms\Source\FPai.pas',0,1,1,1,1,0,0,,
-File_8=TSourceModule,'C:\ProjetosBEMAXE3\Shared\VHF\DbObjects\uDbExtratoConta.pas',0,1,98,13,124,0,0,,
-File_9=TSourceModule,'C:\ProjetosBEMAXE3\Shared\VHF\CtrlObjects\uCtrlExtratoConta.pas',0,1,1,31,15,0,0,,
-File_10=TSourceModule,'C:\ProjetosBEMAXE3\SHARED\SAFT\CtrlObjects\uCtrlExpSAFT2.pas',0,1,151,110,168,0,0,,
-File_11=TSourceModule,'C:\ProjetosBEMAXE3\Shared\SAFT\Source\FExpSAFTMT.pas',0,1,1,29,31,0,0,,
-File_12=TSourceModule,'C:\ProjetosBemaXE3\Shared\VHF\ObjetosMT\Interface\FCxOperacaoImpExtrato.pas',0,1,1591,37,1607,0,0,,
+File_0=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit12.pas',0,1,14,8,26,0,0,,
+File_1=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas',0,1,93,35,105,0,0,,
+File_2=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas',0,1,81,7,104,0,0,,
+File_3=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Edit.pas',0,1,1906,94,1837,0,0,,
+File_4=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas',0,1,21,81,38,0,0,,
+File_5=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\rtl\common\System.Classes.pas',0,1,121,1,139,0,0,,
+File_6=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas',0,1,1,16,1,0,0,,
+File_7=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas',0,1,273,1,21,0,0,,
+File_8=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTelefoneAndroid.pas',0,1,1,1,1,0,0,,
+File_9=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\Source\DUnit\src\TestFramework.pas',0,1,1472,1,1492,0,0,,
+File_10=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas',0,1,1,19,12,0,0,,
+File_11=TSourceModule,'C:\ProjetosBemaXE3\INFRA\BemaForms\Source\FTelaAut.pas',0,1,1,1,1,0,0,,
+File_12=TSourceModule,'C:\ProjetosBemaXE3\INFRA\BemaForms\Source\FPai.pas',0,1,1,1,1,0,0,,
+File_13=TSourceModule,'C:\ProjetosBEMAXE3\Shared\VHF\DbObjects\uDbExtratoConta.pas',0,1,98,13,124,0,0,,
+File_14=TSourceModule,'C:\ProjetosBEMAXE3\Shared\VHF\CtrlObjects\uCtrlExtratoConta.pas',0,1,1,31,15,0,0,,
 
 [Modules]
-Module0=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
-Module1=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-Module2=default.htm
-Count=3
+Module0=default.htm
+Count=1
 EditWindowCount=1
-
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
 
 [default.htm]
 ModuleType=TURLModule
 
 [EditWindow0]
-ViewCount=3
-CurrentEditView=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
+ViewCount=1
+CurrentView=0
 View0=0
-View1=1
-View2=2
 PercentageSizes=1
 Create=1
 Visible=1
 Docked=0
 State=0
-Left=1578
-Top=1500
+Left=1688
+Top=1173
 Width=6521
 Height=8644
 MaxLeft=-5
@@ -68,40 +56,14 @@ BottomMiddelPanelData=0000080001020200000009000000446F636B53697465300E000000546F
 CustomEditViewType=TWelcomePageView
 WelcomePageURL=bds:/default.htm
 
-[View1]
-CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-CursorX=87
-CursorY=16
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-
-[View2]
-CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
-CursorX=16
-CursorY=1
-TopLine=1
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
-
 [Watches]
-Count=7
-Watch0='texto',256,0,18,1,0,'Watches',1
-Watch1='texto[i]',256,0,18,1,0,'Watches',1
-Watch2='mascara[ i ]',256,0,18,1,0,'Watches',1
-Watch3='i',256,0,18,1,0,'Watches',1
-Watch4='length(texto)',256,0,18,1,0,'Watches',1
-Watch5='VetorMultCNPJ[contador]',256,0,18,1,0,'Watches',1
-Watch6=' FCNPJ.VetorMultiplicador[contador]',256,0,18,1,0,'Watches',1
+Count=3
+Watch0='Length( texto )',256,0,18,1,0,'Watches',1
+Watch1='I',256,0,18,1,0,'Watches',1
+Watch2='texto',256,0,18,1,0,'Watches',1
 
 [WatchWindow]
-WatchColumnWidth=120
+WatchColumnWidth=160
 WatchShowColumnHeaders=1
 PercentageSizes=1
 Create=1
@@ -391,8 +353,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=311
-Top=901
+Left=332
+Top=867
 Width=3672
 Height=1029
 MaxLeft=-1
@@ -502,7 +464,7 @@ Visible=1
 Docked=0
 State=0
 Left=0
-Top=1433
+Top=1173
 Width=1688
 Height=3462
 MaxLeft=-5
@@ -622,5 +584,5 @@ ActiveTabID=ProjectManager
 TabDockClients=ProjectManager,ModelViewTool,DataExplorerContainer
 
 [ActiveProject]
-ActiveProject=2
+ActiveProject=1
 

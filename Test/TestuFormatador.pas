@@ -100,7 +100,10 @@ implementation
       ReturnValue: TStrings;
    begin
       Texto       := 'a,b c,d';
-      ReturnValue := FFormatador.Split( Texto );
+      Delimitador := ',';
+      // TODO: Setup method call parameters
+      ReturnValue := FFormatador.Split( Texto, Delimitador );
+      // TODO: Validate method results
       CheckNotNull( ReturnValue, 'erro ao instanciar o objeto lista' );
       CheckEqualsString( 'a', ReturnValue[ 0 ], 'Erro teste split' );
       CheckEqualsString( 'b c', ReturnValue[ 1 ], 'Erro teste split' );

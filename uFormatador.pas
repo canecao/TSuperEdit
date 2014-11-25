@@ -98,17 +98,20 @@ implementation
       I             : Integer;
       AuxEdt, AuxStr: Boolean;
    begin
-      I := 1;
-      Repeat
-         AuxEdt := CharInSet( texto[ I ], [ '0' .. '9' ] );
-         AuxStr := mascara[ I ] = '9';
-         if AuxStr and not AuxEdt then
-            delete( texto, I, 1 );
-         if not AuxStr and AuxEdt then
-            insert( mascara[ I ], texto, I );
-         inc( I );
-      until ( I > Length( texto ) );
-      Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
+      if texto <> EmptyStr then
+         begin
+            I := 1;
+            Repeat
+               AuxEdt := CharInSet( texto[ I ], [ '0' .. '9' ] );
+               AuxStr := mascara[ I ] = '9';
+               if AuxStr and not AuxEdt then
+                  delete( texto, I, 1 );
+               if not AuxStr and AuxEdt then
+                  insert( mascara[ I ], texto, I );
+               inc( I );
+            until ( I > Length( texto ) ) or ( I > Length( mascara ) );
+         end;
+       Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
    end;
 
    class function TFormatador.ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
