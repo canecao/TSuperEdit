@@ -85,7 +85,7 @@ implementation
    begin
       for TipoDoc := tpCPF to tpCNPJ do
          begin
-            DocumentoAux := TFabricaDocumento.CriaDocumento( TipoDoc, ifthen( TipoDoc = tpCPF, cCPF, cCNPJ ) );
+            DocumentoAux := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento(TipoDoc) );
             Digito       := Copy( DocumentoAux.Numero, length( DocumentoAux.Numero ) - 1, 2 );
             Dig1         := DocumentoAux.GeraDigito( 1 );
             Dig2         := DocumentoAux.GeraDigito( 2 );
@@ -101,14 +101,12 @@ implementation
       ReturnValue     : Boolean;
       TipoDoc         : TTipoDoc;
       DocumentoAux    : TDocumento;
-      ExemploDocumento: String;
    begin
       ReturnValue := True;
       // TODO: Setup method call parameters
       for TipoDoc := tpCPF to tpCNPJ do
          begin
-            ExemploDocumento := ifthen( TipoDoc = tpCPF, cCPF, cCNPJ );
-            DocumentoAux     := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento );
+            DocumentoAux     := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento(TipoDoc) );
             ReturnValue      := ReturnValue and DocumentoAux.ValidaTotalDigitos;;
             if not ReturnValue then
                break;
@@ -152,14 +150,12 @@ implementation
       ReturnValue     : Boolean;
       TipoDoc         : TTipoDoc;
       DocumentoAux    : TDocumento;
-      ExemploDocumento: String;
    begin
       ReturnValue := True;
       // TODO: Setup method call parameters
       for TipoDoc := tpCPF to tpCNPJ do
          begin
-            ExemploDocumento := ifthen( TipoDoc = tpCPF, cCPF, cCNPJ );
-            DocumentoAux     := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento );
+            DocumentoAux     := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento(TipoDoc) );
             ReturnValue      := ReturnValue and DocumentoAux.ValidaDigitoVerificardo;;
             if not ReturnValue then
                break;
@@ -174,14 +170,12 @@ implementation
       ReturnValue     : Boolean;
       TipoDoc         : TTipoDoc;
       DocumentoAux    : TDocumento;
-      ExemploDocumento: String;
    begin
       ReturnValue := True;
       // TODO: Setup method call parameters
       for TipoDoc := tpCPF to tpCNPJ do
          begin
-            ExemploDocumento := ifthen( TipoDoc = tpCPF, cCPF, cCNPJ );
-            DocumentoAux     := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento );
+            DocumentoAux     := TFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento(TipoDoc) );
             ReturnValue      := ReturnValue and DocumentoAux.Validar;
             if not ReturnValue then
                break;
@@ -211,7 +205,7 @@ implementation
       // TODO: Setup method call parameters
       for TipoDoc := tpCPF to tpCNPJ do
          begin
-            ReturnValue := FFabricaDocumento.CriaDocumento( TipoDoc, ifthen( TipoDoc = tpCPF, cCPF, cCNPJ ) );
+            ReturnValue := FFabricaDocumento.CriaDocumento( TipoDoc, ExemploDocumento(TipoDoc) );
             if TipoDoc = tpCPF then
                aux := Assigned( ReturnValue ) and ( ReturnValue.ClassType = TCPF )
             else
@@ -290,14 +284,12 @@ implementation
    var
       ReturnValue     : Boolean;
       TipoDoc         : TTipoDoc;
-      ExemploDocumento: String;
    begin
       ReturnValue := True;
       // TODO: Setup method call parameters
       for TipoDoc := tpCPF to tpCNPJ do
          begin
-            ExemploDocumento := ifthen( TipoDoc = tpCPF, cCPF, cCNPJ );
-            ReturnValue      := ReturnValue and TValidador.ValidarDocumento( ExemploDocumento, TipoDoc );
+            ReturnValue      := ReturnValue and TValidador.ValidarDocumento( ExemploDocumento(TipoDoc), TipoDoc );
             if not ReturnValue then
                break;
          end;
