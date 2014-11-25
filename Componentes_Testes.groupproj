@@ -6,7 +6,7 @@
         <Projects Include="Componentes.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="Test\ComponentesTests.dproj">
+        <Projects Include="Test\ComponentesTest.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -26,23 +26,23 @@
     <Target Name="Componentes:Make">
         <MSBuild Projects="Componentes.dproj" Targets="Make"/>
     </Target>
-    <Target Name="ComponentesTests">
-        <MSBuild Projects="Test\ComponentesTests.dproj"/>
+    <Target Name="ComponentesTest">
+        <MSBuild Projects="Test\ComponentesTest.dproj"/>
     </Target>
-    <Target Name="ComponentesTests:Clean">
-        <MSBuild Projects="Test\ComponentesTests.dproj" Targets="Clean"/>
+    <Target Name="ComponentesTest:Clean">
+        <MSBuild Projects="Test\ComponentesTest.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ComponentesTests:Make">
-        <MSBuild Projects="Test\ComponentesTests.dproj" Targets="Make"/>
+    <Target Name="ComponentesTest:Make">
+        <MSBuild Projects="Test\ComponentesTest.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="Componentes;ComponentesTests"/>
+        <CallTarget Targets="Componentes;ComponentesTest"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Componentes:Clean;ComponentesTests:Clean"/>
+        <CallTarget Targets="Componentes:Clean;ComponentesTest:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Componentes:Make;ComponentesTests:Make"/>
+        <CallTarget Targets="Componentes:Make;ComponentesTest:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
