@@ -2,13 +2,10 @@ unit uFormatador;
 
 interface
 
-   uses uTipos, Classes;
+   uses uTipos, Classes, FMX.Forms, FMX.Edit;
 
    type
       TFormatador = class
-      private
-      protected
-         function GetMascara( TipoDco: TTipoDoc ): String;
       public
          function Mascarar( texto, mascara: String ): string;
          function Limpar( pTexto: String ): String;
@@ -17,15 +14,18 @@ interface
          function LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
          function ArrayToStr( Vetor: array of String; Delimitador: char = ',' ): String;
          function Split( texto: String; Delimitador: char = ',' ): TStrings;
-         property mascara[ TipoDco: TTipoDoc ]: String read GetMascara;
          class function ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
          class function RetiraMascara( pString: String ): String;
+         Class procedure Tremer( Sender: TEdit ); overload;
+         Class procedure Tremer( Sender: TForm ); overload;
+         class function GetMascara( TipoDoc: TTipoDoc ): String;
+         property mascara[ TipoDoc: TTipoDoc ]: String read GetMascara;
       end;
 
 implementation
 
    uses
-      System.SysUtils, System.StrUtils;
+      System.SysUtils, System.StrUtils, Math;
 
    { TFormatador }
    function TFormatador.Split( texto: String; Delimitador: char = ',' ): TStrings;
@@ -66,9 +66,9 @@ implementation
       Result     := Trim( pTexto ) + Pad( pCaracter, Quantidade );
    end;
 
-   function TFormatador.GetMascara( TipoDco: TTipoDoc ): String;
+   class function TFormatador.GetMascara( TipoDoc: TTipoDoc ): String;
    begin
-      case TipoDco of
+      case TipoDoc of
          tpCPF: Result         := '999.999.999-99';
          tpCNPJ: Result        := '99.999.999/9999-99';
          tpData: Result        := '99-99-9999';
@@ -111,7 +111,36 @@ implementation
                inc( I );
             until ( I > Length( texto ) ) or ( I > Length( mascara ) );
          end;
-       Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
+      Result := ifthen( Length( texto ) <= Length( mascara ), texto, Copy( texto, 1, Length( mascara ) ) );
+   end;
+
+   class procedure TFormatador.Tremer( Sender: TForm );
+   var
+      X: Single;
+      C: Integer;
+   begin
+      X     := Sender.Left;
+      for C := 1 to 9 do
+         begin
+            Sender.Left := Sender.Left + ifthen( Sender.Left >= X, - 15, 30 );
+            Sleep( 50 );
+            Application.ProcessMessages;
+         end;
+   end;
+
+   class procedure TFormatador.Tremer( Sender: TEdit );
+   var
+      X: Single;
+      C: Integer;
+   begin
+      X     := Sender.Position.X;
+      for C := 1 to 9 do
+         begin
+            Sender.Position.X := Sender.Position.X + ifthen( Sender.Position.X >= X, - 15, 30 );
+            Sleep( 50 );
+            Application.ProcessMessages;
+         end;
+
    end;
 
    class function TFormatador.ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;

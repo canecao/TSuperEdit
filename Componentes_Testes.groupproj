@@ -9,6 +9,9 @@
         <Projects Include="Test\ComponentesTests.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="..\..\RAD Studio\Projects\Project15.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="ComponentesTests:Make">
         <MSBuild Projects="Test\ComponentesTests.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Project15">
+        <MSBuild Projects="..\..\RAD Studio\Projects\Project15.dproj"/>
+    </Target>
+    <Target Name="Project15:Clean">
+        <MSBuild Projects="..\..\RAD Studio\Projects\Project15.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project15:Make">
+        <MSBuild Projects="..\..\RAD Studio\Projects\Project15.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="Componentes;ComponentesTests"/>
+        <CallTarget Targets="Componentes;ComponentesTests;Project15"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="Componentes:Clean;ComponentesTests:Clean"/>
+        <CallTarget Targets="Componentes:Clean;ComponentesTests:Clean;Project15:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="Componentes:Make;ComponentesTests:Make"/>
+        <CallTarget Targets="Componentes:Make;ComponentesTests:Make;Project15:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
