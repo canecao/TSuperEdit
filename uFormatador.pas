@@ -2,16 +2,30 @@ unit uFormatador;
 
 interface
 
-   uses uTipos, Classes, FMX.Forms, FMX.Edit;
+   uses uTipos, System.Classes, FMX.Forms, FMX.Edit;
 
    type
+      TThreadTremer = class( TThread )
+      private
+         FForm: TForm;
+         FEdit: TEdit;
+         procedure SetEdit( const Value: TEdit );
+         procedure SetForm( const Value: TForm );
+      protected
+         procedure Execute; override;
+      public
+         constructor Create( Componente: TObject ); overload;
+         property Edit: TEdit read FEdit write SetEdit;
+         property Form: TForm read FForm write SetForm;
+      end;
+
       TFormatador = class
       public
          function Mascarar( texto, mascara: String ): string;
          function Limpar( pTexto: String ): String;
-         function Pad( pCaracter: char; pTamanho: Integer ): String;
-         function RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
-         function LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+         function Pad( pCaracter: char; pTamanho: integer ): String;
+         function RPad( pTexto: String; pCaracter: char; pTamanho: integer ): String;
+         function LPad( pTexto: String; pCaracter: char; pTamanho: integer ): String;
          function ArrayToStr( Vetor: array of String; Delimitador: char = ',' ): String;
          function Split( texto: String; Delimitador: char = ',' ): TStrings;
          class function ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
@@ -25,7 +39,7 @@ interface
 implementation
 
    uses
-      System.SysUtils, System.StrUtils, Math;
+      Math, System.SysUtils, System.StrUtils;
 
    { TFormatador }
    function TFormatador.Split( texto: String; Delimitador: char = ',' ): TStrings;
@@ -36,31 +50,31 @@ implementation
       Result.DelimitedText   := texto;
    end;
 
-   function TFormatador.ArrayToStr( Vetor: array of String; Delimitador: char = ',' ): String;
+function TFormatador.ArrayToStr( Vetor: array of String; Delimitador: char = ',' ): String;
    var
-      I: Integer;
+      I: integer;
    begin
       Result    := Vetor[ Low( Vetor ) ];
       for I     := Low( Vetor ) + 1 to High( Vetor ) do
          Result := Result + Delimitador + Vetor[ I ];
    end;
 
-   function TFormatador.Pad( pCaracter: char; pTamanho: Integer ): String;
+   function TFormatador.Pad( pCaracter: char; pTamanho: integer ): String;
    begin
       Result := StringOfChar( pCaracter, pTamanho );
    end;
 
-   function TFormatador.LPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+   function TFormatador.LPad( pTexto: String; pCaracter: char; pTamanho: integer ): String;
    var
-      Quantidade: Integer;
+      Quantidade: integer;
    begin
       Quantidade := pTamanho - Length( Trim( pTexto ) );
       Result     := Pad( pCaracter, Quantidade ) + Trim( pTexto );
    end;
 
-   function TFormatador.RPad( pTexto: String; pCaracter: char; pTamanho: Integer ): String;
+   function TFormatador.RPad( pTexto: String; pCaracter: char; pTamanho: integer ): String;
    var
-      Quantidade: Integer;
+      Quantidade: integer;
    begin
       Quantidade := pTamanho - Length( Trim( pTexto ) );
       Result     := Trim( pTexto ) + Pad( pCaracter, Quantidade );
@@ -95,7 +109,7 @@ implementation
 
    function TFormatador.Mascarar( texto: String; mascara: String ): string;
    var
-      I             : Integer;
+      I             : integer;
       AuxEdt, AuxStr: Boolean;
    begin
       if texto <> EmptyStr then
@@ -115,32 +129,13 @@ implementation
    end;
 
    class procedure TFormatador.Tremer( Sender: TForm );
-   var
-      X: Single;
-      C: Integer;
    begin
-      X     := Sender.Left;
-      for C := 1 to 9 do
-         begin
-            Sender.Left := Sender.Left + ifthen( Sender.Left >= X, - 15, 30 );
-            Sleep( 50 );
-            Application.ProcessMessages;
-         end;
+      TThreadTremer.Create( Sender );
    end;
 
    class procedure TFormatador.Tremer( Sender: TEdit );
-   var
-      X: Single;
-      C: Integer;
    begin
-      X     := Sender.Position.X;
-      for C := 1 to 9 do
-         begin
-            Sender.Position.X := Sender.Position.X + ifthen( Sender.Position.X >= X, - 15, 30 );
-            Sleep( 50 );
-            Application.ProcessMessages;
-         end;
-
+      TThreadTremer.Create( Sender );
    end;
 
    class function TFormatador.ColocaMascara( pTipoDocumento: TTipoDoc; pString: String ): String;
@@ -159,6 +154,57 @@ implementation
       Formatador := TFormatador.Create;
       Result     := Formatador.Limpar( pString );
       FreeAndNil( Formatador );
+   end;
+
+   { ObjetoTThread }
+
+   procedure TThreadTremer.Execute;
+   var
+      X: Single;
+      C: integer;
+   begin
+      if Assigned( Edit ) then
+         begin
+            X     := Self.Edit.Position.X;
+            for C := 1 to 9 do
+               begin
+                  Self.Edit.Position.X := Self.Edit.Position.X + ifthen( Self.Edit.Position.X >= X, - 15, 30 );
+                  Sleep( 50 );
+                  Application.ProcessMessages;
+               end;
+         end;
+      if Assigned( Form ) then
+         begin
+            X     := Self.Form.Left;
+            for C := 1 to 9 do
+               begin
+                  Self.Form.Left := Self.Form.Left + ifthen( Self.Form.Left >= X, - 15, 30 );
+                  Sleep( 50 );
+                  Application.ProcessMessages;
+               end;
+         end;
+   end;
+
+   procedure TThreadTremer.SetEdit( const Value: TEdit );
+   begin
+      FEdit := Value;
+   end;
+
+   procedure TThreadTremer.SetForm( const Value: TForm );
+   begin
+      FForm := Value;
+   end;
+
+   constructor TThreadTremer.Create( Componente: TObject );
+   begin
+      // let thread free itself
+      FreeOnTerminate := True;
+      // do not create suspended, let it go as soon as it is created
+      if Componente.ClassParent = TEdit then
+         Self.Edit := TEdit( Componente )
+      else
+         Self.Form := TForm( Componente );
+      inherited Create( False );
    end;
 
 end.
