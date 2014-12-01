@@ -8,7 +8,7 @@
 // (01/12/2014 15:15:46 - - $Rev: 52705 $)
 // ************************************************************************ //
 
-unit CurrencyConvertor;
+unit uCurrencyConvertor;
 
 interface
 

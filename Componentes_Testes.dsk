@@ -1,49 +1,44 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Forms.pas',0,1,352,35,370,0,0,,
-File_1=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Types.pas',0,1,1381,28,1399,0,0,{{1550,0},{1659,11},{'Popup Menus, Actions and Action links'}}{{11127,0},{11391,11},{'Actions and Action links'}},
-File_2=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\rtl\common\System.Classes.pas',0,1,369,30,387,0,0,,
-File_3=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas',0,1,19,1,137,0,0,,
-File_4=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Edit.pas',0,1,13,30,31,0,0,,
-File_5=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\rtl\common\System.UITypes.pas',0,1,622,17,643,0,0,,
-File_6=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit14.pas',0,1,1,5,27,0,0,,
-File_7=TSourceModule,'C:\projetosbemaxe3\FrontOffice\FontesMT\FCadModelosNFMT.pas',0,1,339,56,369,0,0,,
-File_8=TSourceModule,'C:\projetosbemaxe3\FrontOffice\ObjetosMT\DBControlObjects\uCtrlAuditoriaVHF.pas',0,1,4124,1,4142,0,0,,
-File_9=TSourceModule,'C:\projetosbemaxe3\FrontOffice\ObjetosMT\DBControlObjects\uCtrlAuditoriaVHF_old_18042013.pas',0,1,1443,25,1458,0,0,,
-File_10=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit12.pas',0,1,14,8,26,0,0,,
-File_11=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas',0,1,273,1,21,0,0,,
-File_12=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTelefoneAndroid.pas',0,1,1,1,1,0,0,,
+File_0=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas',0,1,1,23,133,0,0,,
+File_1=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uCep.pas',0,1,1,1,1,0,0,,
+File_2=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas',0,1,1,73,21,0,0,,
+File_3=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas',0,1,73,22,109,0,0,,
+File_4=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas',0,1,142,1,166,0,0,,
+File_5=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit16.pas',0,1,29,1,29,0,0,,
+File_6=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Forms.pas',0,1,352,35,370,0,0,,
+File_7=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Types.pas',0,1,1381,28,1399,0,0,{{1550,0}
+File_8=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\rtl\common\System.Classes.pas',0,1,369,30,387,0,0,,
+File_9=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\fmx\FMX.Edit.pas',0,1,13,30,31,0,0,,
+File_10=TSourceModule,'c:\program files (x86)\embarcadero\rad studio\10.0\source\rtl\common\System.UITypes.pas',0,1,622,17,643,0,0,,
+File_11=TSourceModule,'C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit14.pas',0,1,1,5,27,0,0,,
+File_12=TSourceModule,'C:\projetosbemaxe3\FrontOffice\FontesMT\FCadModelosNFMT.pas',0,1,339,56,369,0,0,,
+File_13=TSourceModule,'C:\projetosbemaxe3\FrontOffice\ObjetosMT\DBControlObjects\uCtrlAuditoriaVHF.pas',0,1,4124,1,4142,0,0,,
 
 [Modules]
-Module0=C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit16.pas
-Module1=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
-Module2=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas
-Module3=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-Module4=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas
-Module5=default.htm
-Count=6
+Module0=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uWebServices.pas
+Module1=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuWebServices.pas
+Module2=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas
+Module3=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas
+Module4=default.htm
+Count=5
 EditWindowCount=1
 
-[C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit16.pas]
-ModuleType=TSourceModule
-FormState=1
-FormOnTop=1
-
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas]
+[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uWebServices.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas]
+[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuWebServices.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas]
+[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas]
+[C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas]
 ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
@@ -52,14 +47,13 @@ FormOnTop=0
 ModuleType=TURLModule
 
 [EditWindow0]
-ViewCount=6
-CurrentEditView=C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit16.pas
+ViewCount=5
+CurrentEditView=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uWebServices.pas
 View0=0
 View1=1
 View2=2
 View3=3
 View4=4
-View5=5
 PercentageSizes=1
 Create=1
 Visible=1
@@ -91,58 +85,47 @@ WelcomePageURL=bds:/default.htm
 
 [View1]
 CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
-CursorX=1
-CursorY=166
-TopLine=142
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uValidador.pas
-
-[View2]
-CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\RAD Studio\Projects\Unit16.pas
-CursorX=1
-CursorY=29
-TopLine=29
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=Borland.FormDesignerView
-
-[View3]
-CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas
-CursorX=22
-CursorY=109
-TopLine=73
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uSuperEdit.pas
-
-[View4]
-CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-CursorX=23
-CursorY=133
-TopLine=115
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uFormatador.pas
-
-[View5]
-CustomEditViewType=TEditView
-Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas
-CursorX=73
-CursorY=21
+Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uWebServices.pas
+CursorX=86
+CursorY=12
 TopLine=1
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uTipos.pas
+EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\uWebServices.pas
+
+[View2]
+CustomEditViewType=TEditView
+Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuWebServices.pas
+CursorX=59
+CursorY=57
+TopLine=30
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuWebServices.pas
+
+[View3]
+CustomEditViewType=TEditView
+Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas
+CursorX=1
+CursorY=1
+TopLine=21
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuValidador.pas
+
+[View4]
+CustomEditViewType=TEditView
+Module=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas
+CursorX=1
+CursorY=137
+TopLine=171
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=C:\Users\c1401693.BEMATECH\Documents\GitHub\TSuperEdit\Test\TestuFormatador.pas
 
 [Watches]
 Count=5
@@ -282,11 +265,6 @@ LRDockWidth=1547
 Dockable=1
 StayOnTop=0
 SplitPos=73
-
-[PropInspDesignerSelection]
-ArrangeBy=Name
-SelectedItem=Align,
-ExpandedItems=Anchors=0,BorderIcons=0,Constraints=0,Fill=0,FormFactor=0,"LiveBindings Designer=0",Margins=0,Font=0,LiveBindings=0,Padding=0,Position=0,RotationCenter=0,Scale=0,Touch=0,TouchTargetExpansion=0
 
 [TFileExplorerForm]
 PercentageSizes=1
@@ -684,5 +662,5 @@ ActiveTabID=ProjectManager
 TabDockClients=ProjectManager,ModelViewTool,DataExplorerContainer
 
 [ActiveProject]
-ActiveProject=3
+ActiveProject=2
 

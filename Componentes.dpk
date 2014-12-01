@@ -29,13 +29,20 @@ package Componentes;
 
 requires
   rtl,
-  fmx;
+  fmx,
+  xmlrtl,
+  soaprtl,
+  inet,
+  dbrtl;
 
 contains
   uFormatador in 'uFormatador.pas',
   uSuperEdit in 'uSuperEdit.pas',
   uTipos in 'uTipos.pas',
-  uValidador in 'uValidador.pas';
+  uValidador in 'uValidador.pas',
+  uCep in 'uCep.pas',
+  uCurrencyConvertor in 'uCurrencyConvertor.pas',
+  uWebServices in 'uWebServices.pas';
 
 end.
 
