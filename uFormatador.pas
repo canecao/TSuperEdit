@@ -2,7 +2,7 @@ unit uFormatador;
 
 interface
 
-uses uTipos, System.Classes, FMX.Forms, FMX.Edit;
+uses uTipos, System.Classes, FMX.Forms, FMX.Edit, System.Character;
 
 type
   TThreadTremer = class(TThread)
@@ -23,12 +23,6 @@ type
   public
     function Mascarar(texto, mascara: String): string;
     function Limpar(pTexto: String): String;
-    function Pad(pCaracter: char; pTamanho: integer): String;
-    function RPad(pTexto: String; pCaracter: char; pTamanho: integer): String;
-    function LPad(pTexto: String; pCaracter: char; pTamanho: integer): String;
-    function ArrayToStr(Vetor: array of String;
-      Delimitador: char = ','): String;
-    function Split(texto: String; Delimitador: char = ','): TStrings;
     class function ColocaMascara(pTipoDocumento: TTipoDoc;
       pString: String): String;
     class function RetiraMascara(pString: String): String;
@@ -44,46 +38,6 @@ uses
   Math, System.SysUtils, System.StrUtils;
 
 { TFormatador }
-function TFormatador.Split(texto: String; Delimitador: char = ','): TStrings;
-begin
-  Result := TStringList.Create;
-  Result.Delimiter := Delimitador;
-  Result.StrictDelimiter := True;
-  Result.DelimitedText := texto;
-end;
-
-function TFormatador.ArrayToStr(Vetor: array of String;
-  Delimitador: char = ','): String;
-var
-  I: integer;
-begin
-  Result := Vetor[Low(Vetor)];
-  for I := Low(Vetor) + 1 to High(Vetor) do
-    Result := Result + Delimitador + Vetor[I];
-end;
-
-function TFormatador.Pad(pCaracter: char; pTamanho: integer): String;
-begin
-  Result := StringOfChar(pCaracter, pTamanho);
-end;
-
-function TFormatador.LPad(pTexto: String; pCaracter: char;
-  pTamanho: integer): String;
-var
-  Quantidade: integer;
-begin
-  Quantidade := pTamanho - Length(Trim(pTexto));
-  Result := Pad(pCaracter, Quantidade) + Trim(pTexto);
-end;
-
-function TFormatador.RPad(pTexto: String; pCaracter: char;
-  pTamanho: integer): String;
-var
-  Quantidade: integer;
-begin
-  Quantidade := pTamanho - Length(Trim(pTexto));
-  Result := Trim(pTexto) + Pad(pCaracter, Quantidade);
-end;
 
 class function TFormatador.GetMascara(TipoDoc: TTipoDoc): String;
 begin
@@ -111,46 +65,30 @@ end;
 
 function TFormatador.Limpar(pTexto: String): String;
 var
-  Aux: Boolean;
   C: char;
 begin
-  Result := '';
+  Result := String.Empty;
   for C in pTexto do
-  begin
-    Aux := CharInSet(C, ['0' .. '9']);
-    Result := Result + ifthen(Aux, C, EmptyStr);
-  end;
+    Result := Result + ifthen(C.IsDigit, C);
 end;
 
 function TFormatador.Mascarar(texto: String; mascara: String): string;
 var
-  I, J: integer;
-  AuxEdt, AuxStr: Boolean;
   C: char;
+  I: Integer;
+  aux : String;
 begin
-  Result := EmptyStr;
-  if texto <> EmptyStr then
-  begin
-    // 1111111111111111
-    // (99)99999-9999
-    I := 0;
-    for C in mascara do
+  Result := String.Empty;
+  I := 0;
+  for C in mascara do
+    if I <= texto.Length then
     begin
-      AuxEdt := CharInSet(texto[i], ['0' .. '9' ]);
-      AuxStr := (c <> '9');
-      if texto[i] = #0 then
-         inc(i);
-      if AuxStr then
-      begin
-        Result := Result + c;
-      end else
-      if AuxEdt then
-      begin
-        Result := Result + texto[i];
-        inc(I);
-      end;
-    end;
-  end;
+      aux := ifthen(C <> '9', C, ifthen(texto.Chars[i].IsDigit, texto.Chars[I]));
+      Result := Concat(Result,aux);
+      inc(I, ifthen(C = '9', 1, 0));
+    end
+    else
+      Break;
 end;
 
 class procedure TFormatador.Tremer(Sender: TForm);
@@ -187,7 +125,7 @@ end;
 procedure TThreadTremer.Execute;
 var
   X: Single;
-  C: integer;
+  C: Integer;
 begin
   if Assigned(Edit) then
   begin

@@ -5,8 +5,7 @@ interface
 uses FMX.Forms, FMX.Edit;
 
 type
-  TTipoDoc = (tpCPF, tpCNPJ, tpCep, tpData, tpCelular, tpTelefone, tpCelularDDD,
-    tpTelefoneDDD, tpMascaraRede);
+  TTipoDoc = (tpCPF, tpCNPJ, tpCep, tpData, tpCelular, tpTelefone, tpCelularDDD, tpTelefoneDDD, tpMascaraRede);
   TVetorMultiplicador = array of Integer;
 
 const
