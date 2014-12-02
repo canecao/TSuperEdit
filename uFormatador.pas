@@ -41,26 +41,7 @@ uses
 
 class function TFormatador.GetMascara(TipoDoc: TTipoDoc): String;
 begin
-  case TipoDoc of
-    tpCPF:
-      Result := '999.999.999-99';
-    tpCNPJ:
-      Result := '99.999.999/9999-99';
-    tpData:
-      Result := '99-99-9999';
-    tpCep:
-      Result := '99.999-999';
-    tpCelular:
-      Result := '99999-9999';
-    tpTelefone:
-      Result := '9999-9999';
-    tpCelularDDD:
-      Result := '(99)99999-9999';
-    tpTelefoneDDD:
-      Result := '(99)9999-9999';
-    tpMascaraRede:
-      Result := '999.999.999.999';
-  end;
+   Result := uTipos.Mascara(TipoDoc)
 end;
 
 function TFormatador.Limpar(pTexto: String): String;
@@ -69,7 +50,7 @@ var
 begin
   Result := String.Empty;
   for C in pTexto do
-    Result := Result + ifthen(C.IsDigit, C);
+    Result := Result + ifthen(IsDigit(C), C);
 end;
 
 function TFormatador.Mascarar(texto: String; mascara: String): string;
@@ -83,7 +64,7 @@ begin
   for C in mascara do
     if I <= texto.Length then
     begin
-      aux := ifthen(C <> '9', C, ifthen(texto.Chars[i].IsDigit, texto.Chars[I]));
+      aux := ifthen(C <> '9', C, ifthen(IsDigit(texto.Chars[i]), texto.Chars[I]));
       Result := Concat(Result,aux);
       inc(I, ifthen(C = '9', 1, 0));
     end

@@ -2,42 +2,28 @@ unit uTipos;
 
 interface
 
-uses FMX.Forms, FMX.Edit;
+   type
+      TVetorMultiplicador = array of Integer;
+      TTipoDoc            = ( tpCPF, tpCNPJ, tpCep, tpData, tpCelular, tpTelefone, tpCelularDDD, tpTelefoneDDD, tpMascaraRede );
 
-type
-  TTipoDoc = (tpCPF, tpCNPJ, tpCep, tpData, tpCelular, tpTelefone, tpCelularDDD, tpTelefoneDDD, tpMascaraRede);
-  TVetorMultiplicador = array of Integer;
+   const
+      VetorMultCNPJ      : array [ 1 .. 13 ] of Integer  = ( 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 );
+      VetorMultCPF       : array [ 1 .. 10 ] of Integer  = ( 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 );
+      ExemplosDocumentos : array [ 0 .. 8 ]  of String   = ( '751.002.781-02', '27.633.575/0001-06', '27.650-000', '22-03-1980', '99938-4886', '3647-0697', '(21)99938-4886', '(21)3647-0697', '192.168.001.001' );
+      Mascaras           : array [ 0 .. 8 ]  of String   = ( '999.999.999-99', '99.999.999/9999-99', '99-99-9999', '99.999-999', '99999-9999', '9999-9999', '(99)99999-9999', '(99)9999-9999', '999.999.999.999' );
 
-const
-  VetorMultCNPJ: array [1 .. 13] of Integer = (6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2);
-  VetorMultCPF: array [1 .. 10] of Integer = (11, 10, 9, 8, 7, 6, 5, 4, 3, 2);
-
-function ExemploDocumento(TipoDoc: TTipoDoc): string;
+   function ExemploDocumento( TipoDoc: TTipoDoc ): string;
+   function Mascara( TipoDoc: TTipoDoc ): string;
 
 implementation
 
-function ExemploDocumento(TipoDoc: TTipoDoc): string;
-begin
-  case TipoDoc of
-    tpCPF:
-      Result := '751.002.781-02';
-    tpCNPJ:
-      Result := '27.633.575/0001-06';
-    tpCep:
-      Result := '27.650-000';
-    tpData:
-      Result := '22-03-1980';
-    tpCelular:
-      Result := '999384886';
-    tpTelefone:
-      Result := '36470697';
-    tpCelularDDD:
-      Result := '(21)999384886';
-    tpTelefoneDDD:
-      Result := '(21)36470697';
-    tpMascaraRede:
-      Result := '192.168.001.001';
-  end;
-end;
+   function ExemploDocumento( TipoDoc: TTipoDoc ): string;
+   begin
+      Result := ExemplosDocumentos[ Ord( TipoDoc ) ];
+   end;
 
+   function Mascara( TipoDoc: TTipoDoc ): string;
+   begin
+      Result := Mascaras[ Ord( TipoDoc ) ];
+   end;
 End.
