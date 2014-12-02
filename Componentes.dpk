@@ -5,7 +5,7 @@ package Componentes;
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO ON}
+{$DEBUGINFO OFF}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
@@ -33,9 +33,9 @@ requires
 
 contains
   uFormatador in 'uFormatador.pas',
-  uSuperEdit in 'uSuperEdit.pas',
   uTipos in 'uTipos.pas',
-  uValidador in 'uValidador.pas';
+  uValidador in 'uValidador.pas',
+  uTelefoneAndroid in 'uTelefoneAndroid.pas';
 
 end.
 
