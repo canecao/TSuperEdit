@@ -39,7 +39,7 @@ implementation
 
    procedure Register;
    begin
-      RegisterComponents( 'ricardo', [ TSuperEdit ] );
+      RegisterComponents( 'iConservatoria', [ TSuperEdit ] );
    end;
 
    { TSuperEdit }
